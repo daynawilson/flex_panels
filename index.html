@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flex Panels</title>
+  <link href='https://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+
+  <div class="panels">
+    <div class="panel panel1">
+      <p>Hey</p>
+      <p>Let's</p>
+      <p>Dance</p>
+    </div>
+    <div class="panel panel2">
+      <p>Give</p>
+      <p>Take</p>
+      <p>Receive</p>
+    </div>
+    <div class="panel panel3">
+      <p>Experience</p>
+      <p>It</p>
+      <p>Today</p>
+    </div>
+    <div class="panel panel4">
+      <p>Give</p>
+      <p>All</p>
+      <p>You can</p>
+    </div>
+    <div class="panel panel5">
+      <p>Life</p>
+      <p>In</p>
+      <p>Motion</p>
+    </div>
+  </div>
+
+<script>
+  
+  // What's happening here? We are listening for a click on each panel, when somone clicks we're going to open it, that's going to trigger a CSS, open, and when that finishes, the 2nd one transition end will fire, and that's when we are going to toggle openActive, and then we're just going to go the other way
+
+const panels = document.querySelectorAll('.panel');  // ALL gives us a NODE list of each individual PANEL (no s)
+
+function toggleOpen() {
+    this.classList.toggle('open');   // function that will toggle that class of OPEN
+}
+
+function toggleActive(e) {
+    if (e.propertyName.includes('flex')) {   // makes sure that any browser will toggle whether it's flex or flex-grow
+        this.classList.toggle('open-active');
+    }
+}
+
+panels.forEach(panel => panel.addEventListener('click', toggleOpen));   // then on each of the panels we're going to listen for a click
+panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+
+</script>  
+
+</body>
+</html>
